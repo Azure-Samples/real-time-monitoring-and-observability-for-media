@@ -1,6 +1,6 @@
 # Overview
 
-Follow the steps below to setup to setup local evnironment for development.
+Follow the steps below to setup to setup local environment for development.
 
 ## Prerequisites
 
@@ -35,13 +35,13 @@ touch functions/local.settings.json
 | `AzureWebJobsStorage`                    | `DefaultEndpointsProtocol=https;AccountName=<storage_acct>;AccountKey=xx-xx-xx==;EndpointSuffix=core.windows.net` | Storage Account connection string for Azure Web Jobs used by Functions                                                                  |
 | `datazoom_STORAGE`                       | `DefaultEndpointsProtocol=https;AccountName=<storage_acct>;AccountKey=xx-xx-xx==;EndpointSuffix=core.windows.net` | Storage Account connection string for Input blobs                                                                                       |
 | `MANAGED_CLIENT_ID`                      | `XXX-XXX-XXX`                                                                                                     | Azure Managed Service Identity Client ID                                                                                                |
-| `KUSTO_URI`                              | `https://<data_explorer_resource_name>.<region>.kusto.windows.net"`                                               | Azure Data Explorer Kuster Cluster Resource URI.                                                                                        |
+| `KUSTO_URI`                              | `https://<data_explorer_resource_name>.<region>.kusto.windows.net"`                                               | Azure Data Explorer Kusto Cluster Resource URI.                                                                                        |
 | `KUSTO_DATABASE`                         | `testdata`                                                                                                        | The name of the targeted Kusto Database                                                                                                 |
 | `SLOW_START_TABLE`                       | `slow_start_anomaly_detection`                                                                                    | Slow Start Anomaly Detection Table                                                                                                      |
-| `METRICS_ADVISOR_ENDPOINT`               | `https://name-metricsadvisor.cognitiveservices.azure.com/`                                                        | Metrics Advisor Endopoint                                                                                                               |
+| `METRICS_ADVISOR_ENDPOINT`               | `https://name-metricsadvisor.cognitiveservices.azure.com/`                                                        | Metrics Advisor Endpoint                                                                                                               |
 | `METRICS_ADVISOR_SUBSCRIPTION_KEY`       | `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`                                                                                | The subscription key to your Metrics Advisor. Can be found in Keys and Endpoint section of metrics advisor resource in the Azure portal |
-| `METRICS_ADVISOR_API_KEY`                | `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`                                                                            | Metrics Advisor API Key. Can be found in Azure Metics Advisor Woprkspace                                                                |
-| `METRICS_ADVISOR_ALERT_CONFIGURATION_ID` | `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`                                                                            | Metrics Advisor configuration ID. Can be found in Azure Metics Advisor Woprkspace                                                       |
+| `METRICS_ADVISOR_API_KEY`                | `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`                                                                            | Metrics Advisor API Key. Can be found in Azure Metics Advisor Workspace                                                                |
+| `METRICS_ADVISOR_ALERT_CONFIGURATION_ID` | `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`                                                                            | Metrics Advisor configuration ID. Can be found in Azure Metics Advisor Workspace                                                       |
 
 ### Development
 

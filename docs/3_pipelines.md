@@ -5,7 +5,7 @@ This doc will cover the pipelines found in this Repo.
 There are 2 Pipelines found in this Project:
 
 - The CI Pipeline: [.azure-pipelines.yml](../.azure-pipelines.yml)
-- The Azure Infrastrucutre and Function Deployment Pipeline: [azure-deploy-pipelines.yml](../azure-deploy-pipelines.yml)
+- The Azure Infrastructure and Function Deployment Pipeline: [azure-deploy-pipelines.yml](../azure-deploy-pipelines.yml)
 
 ## CI Pipeline
 
@@ -60,7 +60,7 @@ The Deployment Process consists of building a `.zip` out fo the Function App, ar
 
 ### Deployment Pipeline Variables
 
-There are 3 environemnt variables that must be set for the Azure Pipelines, `azureSubscription`, `azureServiceConnection` and `functionAppName`.
+There are 3 environment variables that must be set for the Azure Pipelines, `azureSubscription`, `azureServiceConnection` and `functionAppName`.
 
 `functionAppName` - The Name of the existing Azure Function App.
 `azureSubscription` - The Name of the Azure Subscription where the Function App is located.

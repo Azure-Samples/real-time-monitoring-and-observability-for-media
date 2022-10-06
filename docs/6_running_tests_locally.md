@@ -6,11 +6,11 @@
 
    ![Alt](./images/test_python_interpreter.png "Select python interpreter")
 
-2. On the side pannel select testing icon
+2. On the side panel select testing icon
 
    ![Alt](./images/test_icon_vscode.png "Testing icon")
 
-3. Complete the configuration on the side pannel. Ensure testing files have the test\_ prefixes
+3. Complete the configuration on the side panel. Ensure testing files have the test\_ prefixes
 
    ![Alt](./images/test_pytest_config.png "Pytest configuration")
 

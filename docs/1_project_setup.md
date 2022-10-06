@@ -22,7 +22,7 @@ Connect your Azure DevOps Project to Azure Subscription using [Service Connectio
   1. Install Azure CLI commands on your local computer using [Install Azure CLI Instructions](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli)
   2. Connect to Azure by using `az login`. If you have multiple Azure subscriptions, you might also need to run `az account set --subscription <subscription-id>` to set the correct subscription
   3. Install Azure Bicep CLI using [Bicep Install Instructions](https://docs.microsoft.com/en-us/azure/azure-resource-manager/bicep/install)
-  4. Fill in the parameters file with your own values before depoloyment
+  4. Fill in the parameters file with your own values before deployment
   5. Update kustotablesetup.kql with your own table column names and types
 
   Setup
@@ -45,7 +45,7 @@ Connect your Azure DevOps Project to Azure Subscription using [Service Connectio
   Prerequisites
 
   1. Create a new Azure DevOps project
-  2. Create a new Azure DevOps pipeline using azure-depoyment-pipelines.yml
+  2. Create a new Azure DevOps pipeline using azure-deployment-pipelines.yml
   3. Fill in the bicep parameters file with your own values before deployment
   4. Update kustotablesetup.kql with your own table column names and types
 
@@ -64,12 +64,12 @@ Connect your Azure DevOps Project to Azure Subscription using [Service Connectio
 - See [Azure Function App Configuration](https://learn.microsoft.com/en-us/azure/azure-functions/functions-how-to-use-azure-function-app-settings?tabs=portal)
 
 - Ensure following values are added into function app settings
-  - source_STORAGE - Your Storage Account Connetion String. You can get it going into newly created Storage Account and select Access Keys from left panel in auzre portal
-  - MANAGED_CLIENT_ID - Your Managed Identity Client Id. You can get it going into newly created Managed Identity and select Overview from left panel in auzre portal
-  - KUSTO_URI - Your Azure Data Explorer Cluster URI. You can get it going into newly created Azure Data Explorer Cluster and select Overview from left panel in auzre portal
+  - source_STORAGE - Your Storage Account Connection String. You can get it going into newly created Storage Account and select Access Keys from left panel in azure portal
+  - MANAGED_CLIENT_ID - Your Managed Identity Client Id. You can get it going into newly created Managed Identity and select Overview from left panel in azure portal
+  - KUSTO_URI - Your Azure Data Explorer Cluster URI. You can get it going into newly created Azure Data Explorer Cluster and select Overview from left panel in azure portal
   - KUSTO_DATABASE - Your Azure Data Explorer Database Name
   - SLOW_START_TABLE - Your Azure Data Explorer Table Name
-  - METRICS_ADVISOR_ENDPOINT- Your Metrics Advisor Endpoint. You can get it going into newly created Metrics Advisor and select Overview from left panel in auzre portal
-  - METRICS_ADVISOR_SUBSCRIPTION_KEY - Your Metrics Advisor Subscription Key. You can get it going into newly created Metrics Advisor and select Keys and Endpoint from left panel in auzre portal
-  - METRICS_ADVISOR_API_KEY - Your Metrics Advisor API Key. Got to Metrics Advisor Worksapce and select API Keys from left panel in Merics Advisor
-  - METRICS_ADVISOR_ALERT_CONFIGURATION_ID - Your Metrics Advisor Alert Configuration Id. Got to Metrics Advisor Worksapce and select Alert Configurations from left panel in Merics Advisor Alerts
+  - METRICS_ADVISOR_ENDPOINT- Your Metrics Advisor Endpoint. You can get it going into newly created Metrics Advisor and select Overview from left panel in azure portal
+  - METRICS_ADVISOR_SUBSCRIPTION_KEY - Your Metrics Advisor Subscription Key. You can get it going into newly created Metrics Advisor and select Keys and Endpoint from left panel in azure portal
+  - METRICS_ADVISOR_API_KEY - Your Metrics Advisor API Key. Got to Metrics Advisor Workspace and select API Keys from left panel in Metrics Advisor
+  - METRICS_ADVISOR_ALERT_CONFIGURATION_ID - Your Metrics Advisor Alert Configuration Id. Got to Metrics Advisor Workspace and select Alert Configurations from left panel in Metrics Advisor Alerts
