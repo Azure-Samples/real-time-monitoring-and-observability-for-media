@@ -1,0 +1,39 @@
+trigger:
+  - main
+
+pool:
+  vmImage: "ubuntu-latest"
+
+variables:
+  MEGALINTER_IMAGE: megalinter/megalinter-documentation:v5.12.0
+  FUNCTIONS_ROOT_DIR: functions
+
+stages:
+  - stage: linting
+    jobs:
+      - job: Linting
+        displayName: Linting Job
+        steps:
+          # Run MegaLinter to detect linting and security issues
+          - script: |
+              docker pull $(MEGALINTER_IMAGE)
+              docker run -v $(System.DefaultWorkingDirectory):/tmp/lint -e GIT_AUTHORIZATION_BEARER=$(System.AccessToken) $(MEGALINTER_IMAGE)
+            displayName: "Linting: MegaLinter analysis"
+  - stage: testing
+    jobs:
+      - job: Testing
+        displayName: Testing Job
+        steps:
+          - task: UsePythonVersion@0
+            inputs:
+              versionSpec: '3.9'
+          - script: |
+              pip install -r $(FUNCTIONS_ROOT_DIR)/requirements.txt
+              pip install -r $(FUNCTIONS_ROOT_DIR)/dev.requirements.txt
+            displayName: 'pip install'
+          - script: pytest $(FUNCTIONS_ROOT_DIR)/tests --doctest-modules --junitxml=junit/test-results.xml --cov=. --cov-report=xml
+            displayName: 'pytest'
+          - task: PublishTestResults@2
+            inputs:
+              testResultsFormat: 'JUnit'
+              testResultsFiles: '**/test-*.xml'

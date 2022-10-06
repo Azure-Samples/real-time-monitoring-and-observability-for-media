@@ -1,0 +1,102 @@
+# Python Function App to Linux on Azure
+# Build a Python function app and deploy it to Azure as a Linux function app.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/python
+
+trigger: none
+
+variables:
+
+  # Agent VM image name
+  vmImageName: 'ubuntu-latest'
+
+  # Working Directory
+  workingDirectory: '$(System.DefaultWorkingDirectory)/'
+
+  # Defauls file name, example 20220622.38_Build_ID_231.zip
+  zipFileName: $(Build.BuildNumber)_Build_ID_$(Build.BuildId).zip
+
+stages:
+- stage: Build
+  displayName: Step 1. Build
+
+  jobs:
+  - job: Build
+    displayName: Build files
+    pool:
+      vmImage: $(vmImageName)
+    steps:
+    - bash: |
+        if [ -f extensions.csproj ]
+        then
+            dotnet build extensions.csproj --runtime ubuntu.16.04-x64 --output ./bin
+        fi
+      workingDirectory: $(workingDirectory)
+      displayName: 'Build extensions'
+    - task: UsePythonVersion@0
+      displayName: 'Use Python 3.9'
+      inputs:
+        versionSpec: 3.9 # Functions V2 supports Python 3.9 as of today
+    - script: |
+        pip install --target $(Build.SourcesDirectory)/functions/.python_packages/lib/site-packages -r $(Build.SourcesDirectory)/functions/requirements.txt
+      displayName: 'Install Python dependencies'
+    - task: ArchiveFiles@2
+      displayName: 'Archive builded files to .zip'
+      inputs:
+        rootFolderOrFile: $(Build.SourcesDirectory)/functions
+        includeRootFolder: false
+        archiveType: zip
+        archiveFile: $(Build.ArtifactStagingDirectory)/$(zipFileName)
+        replaceExistingArchive: false
+    - publish: $(Build.ArtifactStagingDirectory)/$(zipFileName)
+      artifact: drop
+
+- stage: Initial_Infra_Deployment
+  displayName: Step 2. Initial Infrastructure Deployment
+  jobs:
+  - job: Deploy
+    pool:
+      vmImage: $(vmImageName)
+    steps:
+    - task: AzureCLI@2
+      inputs:
+        azureSubscription: $(azureServiceConnection)
+        scriptType: bash
+        scriptLocation: inlineScript
+        inlineScript: |
+          az --version
+          az deployment sub create --location eastus --template-file $(templateFile) --parameters $(parameterFile) deploymentStage='initialInfra'
+
+- stage: Function_Deploy
+  displayName: Step 3. Deploy previously builded files
+  condition: succeeded()
+  jobs:
+  - job: Deploy
+    pool:
+      vmImage: $(vmImageName)
+    steps:
+      - download: current
+        artifact: drop
+      - task: AzureFunctionApp@1
+        inputs:
+          azureSubscription: $(azureSubscription)
+          appType: functionAppLinux
+          appName: $(functionAppName)
+          package: $(Pipeline.Workspace)/drop/$(zipFileName)
+          runtimeStack: 'PYTHON|3.9'
+
+- stage: PostFunction_Infra_Deployment
+  displayName: Step 4. Post Function Infrastructure Deployment
+  jobs:
+  - job: Deploy
+    pool:
+      vmImage: $(vmImageName)
+    steps:
+    - task: AzureCLI@2
+      inputs:
+        azureSubscription: $(azureServiceConnection)
+        scriptType: bash
+        scriptLocation: inlineScript
+        inlineScript: |
+          az --version
+          az deployment sub create --location eastus --template-file $(templateFile) --parameters $(parameterFile) deploymentStage='postFunctionApp'

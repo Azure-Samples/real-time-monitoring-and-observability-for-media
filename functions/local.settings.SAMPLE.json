@@ -1,0 +1,12 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "",
+    "FUNCTIONS_WORKER_RUNTIME": "python",
+    "source_STORAGE": "",
+    "MANAGED_CLIENT_ID": "",
+    "KUSTO_URI": "",
+    "KUSTO_DATABASE": "",
+    "SLOW_START_TABLE": "slow_start_table"
+  }
+}

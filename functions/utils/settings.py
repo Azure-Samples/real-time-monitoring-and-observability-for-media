@@ -1,0 +1,9 @@
+import os
+
+CLUSTER_URI = os.getenv("KUSTO_URI")
+DB_NAME = os.getenv("KUSTO_DATABASE")
+MANAGED_CLIENT_ID = os.getenv("MANAGED_CLIENT_ID")
+
+
+# DYNAMIC CONFIG
+SLOW_START_TABLE = os.environ.get("SLOW_START_TABLE")

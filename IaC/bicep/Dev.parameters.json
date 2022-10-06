@@ -1,0 +1,30 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "resourceGroupName": {
+      "value": ""
+    },
+    "resourceGroupLocation": {
+      "value": ""
+    },
+    "blobStorageName": {
+      "value": ""
+    },
+    "blobStorageNewOrExisting": {
+      "value": "new"
+    },
+    "blobProcessingAppName": {
+      "value": ""
+    },
+    "eventgridProcessingFunctionName": {
+      "value": "name_of_the_event_grid_function_file"
+    },
+    "environmentName": {
+      "value": ""
+    },
+    "grafanaDashboardName": {
+      "value": ""
+    }
+  }
+}
