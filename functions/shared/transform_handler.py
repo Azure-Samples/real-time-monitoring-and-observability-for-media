@@ -16,7 +16,27 @@ logger = logging.getLogger("TransformHandler")
 class TransformHandler:
     def __init__(self, blob_input: func.InputStream):
         self.json_string = self.__get_json_string(blob_input)
+        self.kusto_clients = {}
+        
+    def __get_kusto_client_by_tablename(self, table_name: str):
+        """Instantiate Kusto client
 
+        Args:
+            table_name (str): destination table name
+
+        Returns:
+            IngestionProperties: destination table name
+        """
+        if table_name not in self.kusto_clients:
+            self.kusto_clients[table_name] = KustoServiceClient(
+                cluster_uri=CLUSTER_URI,
+                client_id=MANAGED_CLIENT_ID,
+                db_name=DB_NAME,
+                table_name=destination_table,
+                data_format=DataFormat.CSV,
+            )
+        return self.kusto_clients[table_name]
+        
     def handle_transform_request(self):
         """Handle the incoming Request to the Azure Function."""
         transformations = get_transformations(json_string=self.json_string)
@@ -56,14 +76,8 @@ class TransformHandler:
             blob_data_frame (pd.DataFrame): dataframe to ingest
             destination_table (str): Kusto Table that maps to the dataframe
         """
-        kusto_client = KustoServiceClient(
-            cluster_uri=CLUSTER_URI,
-            client_id=MANAGED_CLIENT_ID,
-            db_name=DB_NAME,
-            table_name=destination_table,
-            data_format=DataFormat.CSV,
-        )
-        kusto_client.ingest_data_frame(blob_data_frame)
+        
+        self.__get_kusto_client_by_tablename(destination_table).ingest_data_frame(blob_data_frame)
 
     def __get_dataframe_dict(
         self, transforms: list[Transform]
@@ -72,7 +86,7 @@ class TransformHandler:
 
         Args:
             transform (Transform): Transform Instance that
-                willtransform json to data frame
+                will transform json to data frame
 
         Returns:
             Dict[str, pd.DataFrame]: Dict[table_name, data_frame]
