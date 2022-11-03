@@ -1,7 +1,7 @@
 # Initial Setup
 
-Clone the following [Project GitHub Repo](https://github.com/Azure-Samples/real-time-monitoring-and-observability-for-media) to your own Azure DevOps project
-Connect your Azure DevOps Project to Azure Subscription using [Service Connection Setup](https://learn.microsoft.com/en-us/azure/devops/pipelines/library/service-endpoints?view=azure-devops&tabs=yaml)
+1. Clone the following [Project GitHub Repo](https://github.com/Azure-Samples/real-time-monitoring-and-observability-for-media) to your own Azure DevOps project
+1. Connect your Azure DevOps Project to Azure Subscription using [Service Connection Setup](https://learn.microsoft.com/azure/devops/pipelines/library/service-endpoints?view=azure-devops&tabs=yaml)
 
 ## Infrastructure Deployment
 
