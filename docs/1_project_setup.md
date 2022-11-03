@@ -19,7 +19,7 @@
 
   Prerequisites
 
-  1. Install Azure CLI commands on your local computer using [Install Azure CLI Instructions](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli)
+  1. Install Azure CLI commands on your local computer using [Install Azure CLI Instructions](https://learn.microsoft.com/cli/azure/install-azure-cli)
   2. Connect to Azure by using `az login`. If you have multiple Azure subscriptions, you might also need to run `az account set --subscription <subscription-id>` to set the correct subscription
   3. Install Azure Bicep CLI using [Bicep Install Instructions](https://docs.microsoft.com/en-us/azure/azure-resource-manager/bicep/install)
   4. Fill in the parameters file with your own values before deployment
