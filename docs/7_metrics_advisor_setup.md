@@ -55,7 +55,7 @@ to this part:
 
 ### Detect Anomalies
 
-When metrics advisor detects anomalies, it will trigger an http webhook alert and send the alert info to Azure Http trigger function. Using hook_handler.py we can retrieve the alert details and save it to ADX table. See [Metrics Advisor Hook Handler Code](funtions/../../functions/shared/metrics_advisor_hook_handler.py) for more details.
+When metrics advisor detects anomalies, it will trigger an http webhook alert and send the alert info to Azure Http trigger function. Using hook_handler.py we can retrieve the alert details and save it to ADX table. See [Metrics Advisor Hook Handler Code](../functions/shared/metrics_advisor_hook_handler.py) for more details.
 
 ### REST API call to get alert details
 

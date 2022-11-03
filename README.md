@@ -4,7 +4,7 @@ This Repo contains a sample application building real-time monitoring and observ
 
 ## Architecture
 
-![Architecture](./docs/images/Architecture_Image.png)
+![Architecture](./docs/images/real_time_monitoring_and_observability_for_media_workflow.png)
 
 ### Folder Structure Overview
 
@@ -44,3 +44,4 @@ This Repo contains a sample application building real-time monitoring and observ
 4. Create custom logic transformation based on your ADX table schema. See [Customize Transformation Logic Guide](./docs/4_extending_transformation_logic.md)
 5. There are three types of functions deployed in this project to make the above architecture work. See [Function Triggers](./docs/5_function_triggers.md)
 6. There are preset test codes to ensure adx and metrics advisor is correctly setup and transformation logic is working as expected. To run tests locally, see [Local Testing Guide](./docs/6_running_tests_locally.md)
+7. Azure Metrics Advisor provides is a time series monitoring platform that provides a set of APIs for data ingestion, anomaly detection, and diagnostics, without needing to know machine learning. To setup API calls and alert configurations, see [Metrics Advisor Guide](./docs/7_metrics_advisor_setup.md)
