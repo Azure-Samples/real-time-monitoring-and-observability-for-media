@@ -1,1 +1,4 @@
 .create table slow_start_anomaly_detection (user_details_content_session_id: string, user_details_app_session_id: string, measurement_startup_duration_content_ms: decimal, dimension_browser_name: string, dimension_os_version: string, dimension_os_name: string, dimension_country_code: string, dimension_city: string, dimension_asn: string, timestamp: datetime)
+.create table anomaly_alerts (incident_id:string, alert_id:string, severity:string, data_feed_id:string, data_feed_name:string, actual_value:decimal, expected_value:decimal, timestamp:datetime)
+.ingest inline into table anomaly_alerts <|
+    "181de532112","181de532511","Low","DFID1","DFName1",112,150,2022-07-06T19:00:00Z

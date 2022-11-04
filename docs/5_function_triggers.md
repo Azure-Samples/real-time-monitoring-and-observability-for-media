@@ -1,6 +1,6 @@
 # Function Triggers
 
-This repo contains 3 types of function triggers to demonstrate the different ways of Triggering data transformations from a Blob Storage and ingestion into an Azure Data Explorer Kusto Cluster.
+This repo contains 4 types of function triggers to demonstrate the different ways of Triggering data transformations from a Blob Storage and ingestion into an Azure Data Explorer Kusto Cluster.
 
 ## Types of Triggers
 

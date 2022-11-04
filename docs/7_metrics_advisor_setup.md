@@ -6,7 +6,7 @@ The `metrics_advisor_hook_trigger` is a Http trigger for alert event that trigge
 
 ## Kusto DB table
 
-This function requires to create a Kusto DB table:
+This function requires to create a Kusto DB tables. Following examples show how to create tables in ADX using kql syntax. These lines of kql commands are already in the kustotablesetup.kql file and gets deployed when IaC deploys. Bellow options are for manual deployment if user faces into any issues with kustotablesetup.kql file:
 
 ```kql
     .create table anomaly_alerts (incident_id:string, alert_id:string, severity:string, data_feed_id:string, data_feed_name:string, actual_value:decimal, expected_value:decimal, timestamp:datetime)
