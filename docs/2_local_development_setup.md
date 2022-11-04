@@ -47,7 +47,7 @@ touch functions/local.settings.json
 
 #### Running Azure Functions
 
-To run the Azure Functions locally, follow this guide: [Develop and Code Azure Functions Locally](https://docs.microsoft.com/en-us/azure/azure-functions/functions-develop-local)
+To run the Azure Functions locally, follow this guide: [Develop and Code Azure Functions Locally](https://learn.microsoft.com/en-us/azure/azure-functions/functions-develop-local)
 
 #### Extending Data Transformations
 
@@ -65,6 +65,6 @@ To Use Locally, follow this guide: [Using Megalinter Locally](https://oxsecurity
 
 There are a few ways to deploy Azure Functions.
 
-1. Deploy through [VSCode](https://docs.microsoft.com/en-us/azure/azure-functions/functions-reference-python?tabs=asgi%2Capplication-level#publishing-to-azure)
-2. Deploy via [azure CLI](https://docs.microsoft.com/en-us/azure/azure-functions/create-first-function-cli-python?tabs=azure-cli%2Cbash%2Cbrowser#create-supporting-azure-resources-for-your-function)
+1. Deploy through [VSCode](https://learn.microsoft.com/en-us/azure/azure-functions/functions-reference-python?tabs=asgi%2Capplication-level#publishing-to-azure)
+2. Deploy via [azure CLI](https://learn.microsoft.com/en-us/azure/azure-functions/create-first-function-cli-python?tabs=azure-cli%2Cbash%2Cbrowser#create-supporting-azure-resources-for-your-function)
 3. Deploy via Azure Pipelines. You can refer to the [pipelines.md](./3_pipelines.md) documentation.

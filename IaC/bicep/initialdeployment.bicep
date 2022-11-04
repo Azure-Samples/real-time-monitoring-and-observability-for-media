@@ -99,7 +99,7 @@ resource processFunctionAppStorageAccount 'Microsoft.Storage/storageAccounts@202
   }
   kind: 'StorageV2'
   sku: {
-    name: 'Standard_RAGRS'
+    name: 'Standard_LRS'
   }
 }
 

@@ -5,42 +5,51 @@
 
 ## Infrastructure Deployment
 
-### Infrastructure Deployment is performed in two stages
+### Infrastructure Deployment is performed in two steps
 
-1. Stage 1 - InitialInfra - This will setup initial infrastructure such as (EventGrid, App Site, Azure Data Explorer, Grafana Dashboard ...)
-2. Stage 2 - PostFunctionApp - This will setup infrastructure after blob processing application like Event Grid Subscription
+1. Step-1 - InitialInfra - This will setup initial infrastructure such as (EventGrid, App Site, Azure Data Explorer, Grafana Dashboard ...)
+2. Step-2 - PostFunctionApp - This will setup infrastructure after blob processing application like Event Grid Subscription
 
 ### Infrastructure bicep code can be deployed in two ways
 
 1. Local deployment using Azure CLI
-2. Automated deployment using Azure DevOps Pipeline
+2. Optional: Automated deployment using Azure DevOps Pipeline
 
 - Manual Deployment
 
   Prerequisites
 
-  1. Install Azure CLI commands on your local computer using [Install Azure CLI Instructions](https://learn.microsoft.com/cli/azure/install-azure-cli)
-  2. Connect to Azure by using `az login`. If you have multiple Azure subscriptions, you might also need to run `az account set --subscription <subscription-id>` to set the correct subscription
-  3. Install Azure Bicep CLI using [Bicep Install Instructions](https://docs.microsoft.com/en-us/azure/azure-resource-manager/bicep/install)
-  4. Fill in the parameters file with your own values before deployment
-  5. Update kustotablesetup.kql with your own table column names and types
+  1. Azure Subscription with the administrator level access
+  2. Install Azure CLI commands on your local computer using [Install Azure CLI Instructions](https://learn.microsoft.com/cli/azure/install-azure-cli)
+  3. Connect to Azure by using `az login`. If user has multiple Azure subscriptions, user needs to set right Azure subscription using bellow command:
+      ```bash 
+      az account set --subscription <subscription-id>
+      ```
+  4. Install Azure Bicep CLI using [Bicep Install Instructions](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/install)
+  5. Fill in the parameters file with your own values before deployment. Path to IaC parameters file: `/IaC/bicep/Dev.parameters.json`
+  6. Update kustotablesetup.kql with your own table column names and types
 
   Setup
-
   1. Perform Initial Infra setup. From command prompt, execute
 
-     `> az deployment sub create --location eastus --template-file .\main.bicep --parameters .\{Name_of_Parameter_File} deploymentStage='initialInfra'`
+     ```bash
+      az deployment sub create --location eastus --template-file .\main.bicep --parameters .\Dev.parameters.json deploymentStage='initialInfra'
+      ```
 
-     - After Initial Infra setup is complete, go to azure portal. Add newley create grafana the grafana admin role at access control (IAM). [IAM Role Assignment](https://learn.microsoft.com/en-us/azure/role-based-access-control/role-assignments-portal?tabs=current)
-     - Open Grafana Dashboard using grafana endpoint url. Go to Settings and add Azure Data Explorer source to your grafana dashboard. Obtain all required credentials from newly created managed identity.
+     - After Initial Infra setup is complete, go to azure portal. Add newley create grafana the grafana admin role at access control (IAM). When Grafana instance is created using bicep files, it will not have an admin permission which is required to be be able to access Grafana Dashboard using Grafana endpoint. [IAM Role Assignment](https://learn.microsoft.com/en-us/azure/role-based-access-control/role-assignments-portal?tabs=current)
+     - In the Portal. Go to the resource group you created and select Azure Managed Grafana resource. When the Initial Infra structure code is deployed, our ADX and Grafana is not automatically configured in order to Grafana Dashboard to be able to pull data from ADX. So we need to manually configure Grafana with ADX. In order to open Grafana Dashboard, select endpoint url inside the Grafana resource. It will open up Grafana Dashboard in the browser. If you get error page it means you are having admin permission issue which we covered in the previous step. On the Grafana Dashboard, go to the settings and search/add Azure Data Explorer source to your grafana dashboard. ADX will ask required credential which user can obtain all required credentials from newly created managed identity resource in the resource group.
 
   2. Deploy Azure Function using CI/CD Pipeline azure-depoyment-pipelines.yml. Deploy only Function_Deploy stage. See [Pipeline Setup](./3_pipelines.md)
 
-  3. Perform Post Function setup. From command prompt, execute
-     `> az deployment sub create --location eastus --template-file .\main.bicep --parameters .\{Name_of_Parameter_File} deploymentStage='postFunctionApp'`
-  4. Configure Azure Function App [Instructions](#azure-function-app-configuration)
+   Step-2
 
-- Azure DevOps Pipeline Deployment
+  1. Perform Post Function setup. From command prompt, execute
+     ```bash
+     az deployment sub create --location eastus --template-file .\main.bicep --parameters .\Dev.parameters.json deploymentStage='postFunctionApp'
+     ```
+  2. Configure Azure Function App [Instructions](#azure-function-app-configuration)
+
+- Optional: Azure DevOps Pipeline Deployment
 
   Prerequisites
 
@@ -63,7 +72,7 @@
 
 - See [Azure Function App Configuration](https://learn.microsoft.com/en-us/azure/azure-functions/functions-how-to-use-azure-function-app-settings?tabs=portal)
 
-- Ensure following values are added into function app settings
+- Ensure following values are added into function app settings in the portal
   - source_STORAGE - Your Storage Account Connection String. You can get it going into newly created Storage Account and select Access Keys from left panel in azure portal
   - MANAGED_CLIENT_ID - Your Managed Identity Client Id. You can get it going into newly created Managed Identity and select Overview from left panel in azure portal
   - KUSTO_URI - Your Azure Data Explorer Cluster URI. You can get it going into newly created Azure Data Explorer Cluster and select Overview from left panel in azure portal
