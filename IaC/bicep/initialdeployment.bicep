@@ -103,25 +103,6 @@ resource processFunctionAppStorageAccount 'Microsoft.Storage/storageAccounts@202
     name: 'Standard_LRS'
   }
 }
-resource workspace 'Microsoft.OperationalInsights/workspaces@2021-12-01-preview' = {
-  name: functionAppOperationalInsight
-  location: location
-  properties: {}
-}
-
-resource processFunctionAppApplicationInsights 'Microsoft.Insights/components@2020-02-02' = {
-  name: functionAppInsight
-  location: location
-  tags:{
-    environment : environmentName
-  }
-  kind: 'web'
-  properties: {
-    Application_Type: 'web'
-    Request_Source: 'rest'
-    WorkspaceResourceId : workspace.id
-  }
-}
 
 resource processFunctionAppHostingPlan 'Microsoft.Web/serverfarms@2021-03-01' = {
   name: functionAppPlan
@@ -130,14 +111,13 @@ resource processFunctionAppHostingPlan 'Microsoft.Web/serverfarms@2021-03-01' = 
     environment : environmentName
   }
   sku: {
-    name: 'Y1'
-    tier: 'Dynamic'
+    name: 'F1'
+    tier: 'Free'
   }
   properties: {
     reserved: true
   }
 }
-
 
 resource processFunctionApp 'Microsoft.Web/sites@2021-03-01' = {
   name: blobProcessingApplication
@@ -156,14 +136,6 @@ resource processFunctionApp 'Microsoft.Web/sites@2021-03-01' = {
     serverFarmId: processFunctionAppHostingPlan.id
     siteConfig: {
       appSettings: [
-        {
-          name: 'APPINSIGHTS_INSTRUMENTATIONKEY'
-          value: processFunctionAppApplicationInsights.properties.InstrumentationKey
-        }
-        {
-          name: 'APPLICATIONINSIGHTS_CONNECTION_STRING'
-          value: processFunctionAppApplicationInsights.properties.ConnectionString
-        }
         {
           name: 'FUNCTIONS_EXTENSION_VERSION'
           value: '~4'
