@@ -12,12 +12,13 @@ param metricsAdvisorName string = ''
 var managedIdentityName = '${blobProcessingApplication}-identity'
 var functionAppStorage = '${blobProcessingApplication}sa'
 var functionAppPlan = '${blobProcessingApplication}plan'
+var functionAppOperationalInsight = '${blobProcessingApplication}-operationalInsight'
 var functionAppInsight = '${blobProcessingApplication}appinsight'
 var functionAppConnectionString = 'DefaultEndpointsProtocol=https;AccountName=${processFunctionAppStorageAccount.name};EndpointSuffix=${environment().suffixes.storage};AccountKey=${listKeys(processFunctionAppStorageAccount.id, processFunctionAppStorageAccount.apiVersion).keys[0].value}'
 
 
 
-resource nameStorageAccountResource 'Microsoft.Storage/storageAccounts@2021-02-01' = if (blobStorageNewOrExisting == 'new') {
+resource MyStorageAccountResource 'Microsoft.Storage/storageAccounts@2021-02-01' = if (blobStorageNewOrExisting == 'new') {
   name: blobStorageName
   location: location
   kind: 'StorageV2'
@@ -32,8 +33,8 @@ resource nameStorageAccountResource 'Microsoft.Storage/storageAccounts@2021-02-0
   }
 }
 
-resource nameStorageAccountBlobService 'Microsoft.Storage/storageAccounts/blobServices@2021-09-01' = if (blobStorageNewOrExisting == 'new') {
-  parent: nameStorageAccountResource
+resource MyStorageAccountBlobService 'Microsoft.Storage/storageAccounts/blobServices@2021-09-01' = if (blobStorageNewOrExisting == 'new') {
+  parent: MyStorageAccountResource
   name: 'default'
   properties: {
     changeFeed: {
@@ -58,8 +59,8 @@ resource nameStorageAccountBlobService 'Microsoft.Storage/storageAccounts/blobSe
   }
 }
 
-resource nameStorageAccountBlobserviceContainer 'Microsoft.Storage/storageAccounts/blobServices/containers@2021-09-01' = if (blobStorageNewOrExisting == 'new') {
-  parent: nameStorageAccountBlobService
+resource MyStorageAccountBlobserviceContainer 'Microsoft.Storage/storageAccounts/blobServices/containers@2021-09-01' = if (blobStorageNewOrExisting == 'new') {
+  parent: MyStorageAccountBlobService
   name: 'videotelemetrycontainer'
   properties: {
     immutableStorageWithVersioning: {
@@ -79,7 +80,7 @@ resource nameStorageAccountEventgridResource 'Microsoft.EventGrid/systemTopics@2
   }
   properties: {
     topicType: 'Microsoft.Storage.StorageAccounts'
-    source: nameStorageAccountResource.id
+    source: MyStorageAccountResource.id
   }
 }
 
@@ -102,6 +103,11 @@ resource processFunctionAppStorageAccount 'Microsoft.Storage/storageAccounts@202
     name: 'Standard_LRS'
   }
 }
+resource workspace 'Microsoft.OperationalInsights/workspaces@2021-12-01-preview' = {
+  name: functionAppOperationalInsight
+  location: location
+  properties: {}
+}
 
 resource processFunctionAppApplicationInsights 'Microsoft.Insights/components@2020-02-02' = {
   name: functionAppInsight
@@ -113,6 +119,7 @@ resource processFunctionAppApplicationInsights 'Microsoft.Insights/components@20
   properties: {
     Application_Type: 'web'
     Request_Source: 'rest'
+    WorkspaceResourceId : workspace.id
   }
 }
 
