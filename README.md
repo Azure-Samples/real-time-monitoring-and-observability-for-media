@@ -39,8 +39,8 @@ This Repo contains a sample application building real-time monitoring and observ
 ### Step by Step Guide
 
 1. First we need to deploy all the required resources to Azure. Azure infrastructure code is written in bicep and located in IaC folder. See [Project Setup Guide](./docs/1_project_setup.md)
-2. Setup deployment pipeline to deploy the resources and auto test/lint code. See [Pipeline Setup Guide](./docs/3_pipelines.md)
-3. Setup required environment variables for local development. See [Local Development Guide](./docs/2_local_development_setup.md)
+2. Setup deployment pipeline to deploy the resources and auto test/lint code. See [Pipeline Setup Guide](./docs/2_pipelines.md)
+3. Setup required environment variables for local development. See [Local Development Guide](./docs/3_local_development_setup.md)
 4. Create custom logic transformation based on your ADX table schema. See [Customize Transformation Logic Guide](./docs/4_extending_transformation_logic.md)
 5. There are three types of functions deployed in this project to make the above architecture work. See [Function Triggers](./docs/5_function_triggers.md)
 6. There are preset test codes to ensure adx and metrics advisor is correctly setup and transformation logic is working as expected. To run tests locally, see [Local Testing Guide](./docs/6_running_tests_locally.md)
