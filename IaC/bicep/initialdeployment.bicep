@@ -12,8 +12,6 @@ param metricsAdvisorName string = ''
 var managedIdentityName = '${blobProcessingApplication}-identity'
 var functionAppStorage = '${blobProcessingApplication}sa'
 var functionAppPlan = '${blobProcessingApplication}plan'
-var functionAppOperationalInsight = '${blobProcessingApplication}-operationalInsight'
-var functionAppInsight = '${blobProcessingApplication}appinsight'
 var functionAppConnectionString = 'DefaultEndpointsProtocol=https;AccountName=${processFunctionAppStorageAccount.name};EndpointSuffix=${environment().suffixes.storage};AccountKey=${listKeys(processFunctionAppStorageAccount.id, processFunctionAppStorageAccount.apiVersion).keys[0].value}'
 
 
