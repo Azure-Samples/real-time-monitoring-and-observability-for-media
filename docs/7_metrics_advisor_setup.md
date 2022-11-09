@@ -2,7 +2,7 @@
 
 ## MetricsAdvisorHookTrigger - Python
 
-The `metrics_advisor_hook_trigger` is a Http trigger for alert event that triggers by a hook configuration. See [Metrics Advisor Hook Configuration](https://learn.microsoft.com/en-us/azure/applied-ai-services/metrics-advisor/how-tos/alerts) for more details.
+The `metrics_advisor_hook_trigger` is a Http trigger for alert event that triggers by a hook configuration. See [Metrics Advisor Hook Configuration](https://learn.microsoft.com/azure/applied-ai-services/metrics-advisor/how-tos/alerts) for more details.
 
 ## Kusto DB table
 
@@ -27,7 +27,7 @@ In order to get an alert and save it to ADX table, we need to follow the below c
 
 ### Create Web Hook on Metrics Advisor
 
-See [Metrics Advisor Hook Configuration](https://learn.microsoft.com/en-us/azure/applied-ai-services/metrics-advisor/how-tos/alerts) for more details.
+See [Metrics Advisor Hook Configuration](https://learn.microsoft.com/azure/applied-ai-services/metrics-advisor/how-tos/alerts) for more details.
 
 ### Create Alert configuration on Metrics Advisor
 

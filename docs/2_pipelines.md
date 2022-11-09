@@ -54,7 +54,7 @@ This Pipeline has no trigger, and requires **manual** action to trigger the Azur
 
 This pipeline has the following **Prerequisite**:
 
-- Existing [Azure Function App](https://learn.microsoft.com/en-us/azure/azure-functions/functions-how-to-use-azure-function-app-settings?tabs=portal)
+- Existing [Azure Function App](https://learn.microsoft.com/azure/azure-functions/functions-how-to-use-azure-function-app-settings?tabs=portal)
 
 The Deployment Process consists of building a `.zip` out fo the Function App, archiving it as an Artifact, and then using that Artifact in the latter `deploy` Stage to deploy the Function App.
 
@@ -64,9 +64,9 @@ There are 3 environment variables that must be set for the Azure Pipelines, `azu
 
 `functionAppName` - The Name of the existing Azure Function App.
 `azureSubscription` - The Name of the Azure Subscription where the Function App is located.
-`azureServiceConnection` - The Name of the Azure Service Connection that has access to the Azure Subscription. [Service Connection Setup](https://learn.microsoft.com/en-us/azure/devops/pipelines/library/service-endpoints?view=azure-devops&tabs=yaml)
+`azureServiceConnection` - The Name of the Azure Service Connection that has access to the Azure Subscription. [Service Connection Setup](https://learn.microsoft.com/azure/devops/pipelines/library/service-endpoints?view=azure-devops&tabs=yaml)
 
-To set these variables, you can refer to [Azure Pipelines Variables Documentation](https://learn.microsoft.com/en-us/azure/devops/pipelines/process/variables?view=azure-devops&tabs=yaml%2Cbatch)
+To set these variables, you can refer to [Azure Pipelines Variables Documentation](https://learn.microsoft.com/azure/devops/pipelines/process/variables?view=azure-devops&tabs=yaml%2Cbatch)
 
 ### Deployment Pipeline Composition
 

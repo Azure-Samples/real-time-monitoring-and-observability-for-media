@@ -25,7 +25,7 @@
       ```bash 
       az account set --subscription <subscription-id>
       ```
-  4. Install Azure Bicep CLI using [Bicep Install Instructions](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/install)
+  4. Install Azure Bicep CLI using [Bicep Install Instructions](https://learn.microsoft.com/azure/azure-resource-manager/bicep/install)
   5. Fill in the parameters file with your own values before deployment. Path to IaC parameters file: `/IaC/bicep/Dev.parameters.json`
   6. Update kustotablesetup.kql with your own table column names and types
 
@@ -36,7 +36,7 @@
       az deployment sub create --location eastus --template-file .\main.bicep --parameters .\Dev.parameters.json deploymentStage='initialInfra'
       ```
 
-     - After Initial Infra setup is complete, go to azure portal. Add newley create grafana the grafana admin role at access control (IAM). When Grafana instance is created using bicep files, it will not have an admin permission which is required to be be able to access Grafana Dashboard using Grafana endpoint. [IAM Role Assignment](https://learn.microsoft.com/en-us/azure/role-based-access-control/role-assignments-portal?tabs=current)
+     - After Initial Infra setup is complete, go to azure portal. Add newley create grafana the grafana admin role at access control (IAM). When Grafana instance is created using bicep files, it will not have an admin permission which is required to be be able to access Grafana Dashboard using Grafana endpoint. [IAM Role Assignment](https://learn.microsoft.com/azure/role-based-access-control/role-assignments-portal?tabs=current)
      - In the Portal. Go to the resource group you created and select Azure Managed Grafana resource. When the Initial Infra structure code is deployed, our ADX and Grafana is not automatically configured in order to Grafana Dashboard to be able to pull data from ADX. So we need to manually configure Grafana with ADX. In order to open Grafana Dashboard, select endpoint url inside the Grafana resource. It will open up Grafana Dashboard in the browser. If you get error page it means you are having admin permission issue which we covered in the previous step. On the Grafana Dashboard, go to the settings and search/add Azure Data Explorer source to your grafana dashboard. ADX will ask required credential which user can obtain all required credentials from newly created managed identity resource in the resource group.
 
   2. Deploy Azure Function using CI/CD Pipeline azure-depoyment-pipelines.yml. Deploy only Function_Deploy stage. See [Pipeline Setup](./2_pipelines.md)
@@ -60,17 +60,17 @@
 
   Setup
 
-  1. Define variables `azureSubscription, azureServiceConnection, functionAppName` to your pipeline. See [YAML Pipeline Editor UI](https://learn.microsoft.com/en-us/azure/devops/pipelines/get-started/yaml-pipeline-editor?view=azure-devops)
+  1. Define variables `azureSubscription, azureServiceConnection, functionAppName` to your pipeline. See [YAML Pipeline Editor UI](https://learn.microsoft.com/azure/devops/pipelines/get-started/yaml-pipeline-editor?view=azure-devops)
      - azureSubscription - Your Subscription Id
-     - azureServiceConnection - Your service connection name. See [Service Connection Setup](https://learn.microsoft.com/en-us/azure/devops/pipelines/library/service-endpoints?view=azure-devops&tabs=yaml)
+     - azureServiceConnection - Your service connection name. See [Service Connection Setup](https://learn.microsoft.com/azure/devops/pipelines/library/service-endpoints?view=azure-devops&tabs=yaml)
      - functionAppName - Your function app name from initial infra deployment
   2. Run the pipeline. See [Pipeline Setup](./3_pipelines.md)
-  3. Add Grafana Admin Access Control (IAM) to newly created grafana dashboard. See [IAM Role Assignment](https://learn.microsoft.com/en-us/azure/role-based-access-control/role-assignments-portal?tabs=current)
+  3. Add Grafana Admin Access Control (IAM) to newly created grafana dashboard. See [IAM Role Assignment](https://learn.microsoft.com/azure/role-based-access-control/role-assignments-portal?tabs=current)
   4. Configure Azure Function App [Instructions](#azure-function-app-configuration)
 
 ### Azure Function App Configuration
 
-- See [Azure Function App Configuration](https://learn.microsoft.com/en-us/azure/azure-functions/functions-how-to-use-azure-function-app-settings?tabs=portal)
+- See [Azure Function App Configuration](https://learn.microsoft.com/azure/azure-functions/functions-how-to-use-azure-function-app-settings?tabs=portal)
 
 - Ensure following values are added into function app settings in the portal
   - source_STORAGE - Your Storage Account Connection String. You can get it going into newly created Storage Account and select Access Keys from left panel in azure portal
