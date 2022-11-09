@@ -39,7 +39,7 @@
      - After Initial Infra setup is complete, go to azure portal. Add newley create grafana the grafana admin role at access control (IAM). When Grafana instance is created using bicep files, it will not have an admin permission which is required to be be able to access Grafana Dashboard using Grafana endpoint. [IAM Role Assignment](https://learn.microsoft.com/en-us/azure/role-based-access-control/role-assignments-portal?tabs=current)
      - In the Portal. Go to the resource group you created and select Azure Managed Grafana resource. When the Initial Infra structure code is deployed, our ADX and Grafana is not automatically configured in order to Grafana Dashboard to be able to pull data from ADX. So we need to manually configure Grafana with ADX. In order to open Grafana Dashboard, select endpoint url inside the Grafana resource. It will open up Grafana Dashboard in the browser. If you get error page it means you are having admin permission issue which we covered in the previous step. On the Grafana Dashboard, go to the settings and search/add Azure Data Explorer source to your grafana dashboard. ADX will ask required credential which user can obtain all required credentials from newly created managed identity resource in the resource group.
 
-  2. Deploy Azure Function using CI/CD Pipeline azure-depoyment-pipelines.yml. Deploy only Function_Deploy stage. See [Pipeline Setup](./3_pipelines.md)
+  2. Deploy Azure Function using CI/CD Pipeline azure-depoyment-pipelines.yml. Deploy only Function_Deploy stage. See [Pipeline Setup](./2_pipelines.md)
 
    Step-2
 

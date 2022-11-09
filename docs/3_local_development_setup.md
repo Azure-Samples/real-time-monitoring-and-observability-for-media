@@ -67,4 +67,4 @@ There are a few ways to deploy Azure Functions.
 
 1. Deploy through [VSCode](https://learn.microsoft.com/en-us/azure/azure-functions/functions-reference-python?tabs=asgi%2Capplication-level#publishing-to-azure)
 2. Deploy via [azure CLI](https://learn.microsoft.com/en-us/azure/azure-functions/create-first-function-cli-python?tabs=azure-cli%2Cbash%2Cbrowser#create-supporting-azure-resources-for-your-function)
-3. Deploy via Azure Pipelines. You can refer to the [pipelines.md](./3_pipelines.md) documentation.
+3. Deploy via Azure Pipelines. You can refer to the [pipelines.md](./2_pipelines.md) documentation.
