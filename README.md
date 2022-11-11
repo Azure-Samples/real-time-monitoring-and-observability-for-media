@@ -9,7 +9,7 @@ Architecture Place Holder
 
 ### Step by Step Guide
 
-1. Infrastructure Deployment and Configuration. See [Project Setup Guide](./docs/1_infrastrucutre_deployment_configuration.md)
+1. Infrastructure Deployment and Configuration. See [Infrastructure Deployment](./docs/1_infrastrucutre_deployment_configuration.md)
 2. Local Development Setup. See [Local Development Setup](./docs/2_local_development_setup.md)
 3. Extend Transformation Logic. See [Customize Transformation Logic Guide](./docs/3_extending_transformation_logic.md)
 4. Types of Function Triggers. See [Function Triggers](./docs/4_function_triggers.md)
