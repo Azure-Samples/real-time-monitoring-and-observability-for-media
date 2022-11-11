@@ -1,0 +1,28 @@
+[
+    {
+        "configuration_id": "98877666544321",
+        "event_id": "12312343354546",
+        "event": {
+            "type": "playback_start",
+            "formatted_timestamp": 1660176375708,
+            "attributes":{
+                "startup_duration_content_ms" : 506
+            }
+        },
+        "user_details": {
+            "app_session_id": "5555555",
+            "content_session_id": "98877666544321"
+        },
+        "device":{
+            "browser_name": "Windows Explorer",
+            "os_name": "Windows"
+        },
+        "geo_location":{
+            "country": "United States",
+            "city":"New York"
+        },
+        "network":{
+            "asn":"8333"
+        }
+    }
+]

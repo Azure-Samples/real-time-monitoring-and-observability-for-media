@@ -10,4 +10,8 @@ This repo contains 4 types of function triggers to demonstrate the different way
 
 **HTTP Trigger** - Execute Azure function on an HTTP Request. [HTTP Trigger for Azure Functions](https://learn.microsoft.com/azure/azure-functions/functions-bindings-http-webhook-trigger?tabs=in-process%2Cfunctionsv2&pivots=programming-language-python)
 
-**Metrics Advisor HTTP Hook Trigger** - Additionally we have another HTTP trigger that handles the Metrics Advisor Webhook alerts and sends the data into ADX alert table
+**Metrics Advisor HTTP Hook Trigger** - HTTP trigger that handles the Metrics Advisor Webhook alerts and sends the data into ADX alert table
+
+***To test it simply upload `sample/test_sample.json` in to storageAccount container, you will see function app gets blob_trigger and the data from sample files will be pushed to the ADX table***
+
+***Go to the next step to setup metrics advisor and metrics advisor hook alerts [metrics_advisor_setup](docs/../5_metrics_advisor_setup.md)***
