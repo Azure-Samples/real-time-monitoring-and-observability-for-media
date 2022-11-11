@@ -4,14 +4,13 @@ This Repo contains a sample application building real-time monitoring and observ
 
 ## Architecture
 
-<!-- ![Architecture](./docs/images/real_time_monitoring_and_observability_for_media_workflow.png) -->
-Architecture Place Holder
+![Architecture](./docs/images/real_time_monitoring_and_observability_for_media_workflow.png)
 
 ### Step by Step Guide
 
-1. Infrastructure Deployment and Configuration. See [Infrastructure Deployment](./docs/1_infrastrucutre_deployment_configuration.md)
-2. Local Development Setup. See [Local Development Setup](./docs/2_local_development_setup.md)
-3. Extend Transformation Logic. See [Customize Transformation Logic Guide](./docs/3_extending_transformation_logic.md)
-4. Types of Function Triggers. See [Function Triggers](./docs/4_function_triggers.md)
-5. Metrics Adivsor Setup. See [Metrics Advisor Setup](./docs/5_metrics_advisor_setup.md)
-6. Running Tests Locally. See [Running Tests](./docs/6_running_tests_locally.md)
+a. Infrastructure Deployment and Configuration. See [Infrastructure Deployment](./docs/1_infrastrucutre_deployment_configuration.md)
+b. Local Development Setup. See [Local Development Setup](./docs/2_local_development_setup.md)
+c. Extend Transformation Logic. See [Customize Transformation Logic Guide](./docs/3_extending_transformation_logic.md)
+d. Types of Function Triggers. See [Function Triggers](./docs/4_function_triggers.md)
+e. Metrics Advisor Setup. See [Metrics Advisor Setup](./docs/5_metrics_advisor_setup.md)
+f. Running Tests Locally. See [Running Tests](./docs/6_running_tests_locally.md)
