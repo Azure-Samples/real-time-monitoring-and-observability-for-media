@@ -1,6 +1,6 @@
 # Initial Setup
 
-1. Clone the following [Project GitHub Repo](https://github.com/Azure-Samples/real-time-monitoring-and-observability-for-media) to your local repo
+1. Clone the following [Project GitHub Repo](https://github.com/Azure-Samples/real-time-monitoring-and-observability-for-media) to your local machine
 
 ## Infrastructure Deployment
 
