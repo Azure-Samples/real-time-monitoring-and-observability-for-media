@@ -59,4 +59,4 @@ To learn more about MA hooks see [Metrics Advisor Hooks](https://learn.microsoft
 
 ***Now the webhook is configured with our data feed metrics***
 
-***Go to the next step to run the test to test current setup [Running Tests Locally](/docs/6_running_tests_locally.md)***
+***Go to the next step to run the test to test current setup. [Running Tests Locally](/docs/6_running_tests_locally.md)***

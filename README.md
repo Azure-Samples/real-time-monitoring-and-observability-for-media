@@ -21,7 +21,7 @@ This code sample includes the necessary Infrastructure-as-Code (IaC) to bootstra
 
 ## Contributing
 
-This project welcomes contributions and suggestions. Most contributions require you to agree to a Contributor License Agreement (CLA) declaring that you have the right to, and actually do, grant us the rights to use your contribution. For details, visit https://cla.opensource.microsoft.com
+This project welcomes contributions and suggestions. Most contributions require you to agree to a Contributor License Agreement (CLA) declaring that you have the right to, and actually do, grant us the rights to use your contribution. For details, visit https://cla.opensource.microsoft.com.
 
 To contribute, please start by creating a self-assigned [**issue**](https://github.com/Azure-Samples/real-time-monitoring-and-observability-for-media/issues/new) giving a high-level overview of what you'd like to do. Once any discussion there concludes, follow up with a PR.
 

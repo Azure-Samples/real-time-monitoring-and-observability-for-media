@@ -2,7 +2,7 @@
 
 On the VS Code install the [python extension](https://code.visualstudio.com/docs/python/testing). It will automatically detects pytest files in the project folder. Follow the below steps to run the test:
 
-## Ctrl+Shift+P and Select a python version 3.9 on vs code
+## Ctrl+Shift+P and Select a python version 3.9 on VS Code
 
 1. Ctrl+Shift+P and select python interpreter
 
