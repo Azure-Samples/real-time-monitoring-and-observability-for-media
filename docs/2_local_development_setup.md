@@ -1,6 +1,6 @@
-# Overview
+# Local Development Setup
 
-Follow the steps below to setup to setup local environment for development.
+Follow the steps below to setup the local environment for development.
 
 ## Prerequisites
 
@@ -15,13 +15,13 @@ Optional:
   - `ms-python.python`
 - [docker](https://docs.docker.com/get-docker/) (If wanting to use Megalinter container)
 
-### Install Dependencies
+## Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### Common Configuration
+## Common Configuration
 
 > Set the listed env vars in the table below in a `functions/local.settings.json` file.
 
@@ -31,7 +31,7 @@ touch functions/local.settings.json
 
 | Name                                     | Example Value                                                                                                     | Description                                                                                                                             |
 | ---------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
-| `FUNCTIONS_WORKER_RUNTIME`               | python                                                                                                            | The Runtime of the Azure Functions                                                                                                      |
+| `FUNCTIONS_WORKER_RUNTIME`               | python                                                                                                            | The runtime of the Azure Functions                                                                                                      |
 | `AzureWebJobsStorage`                    | `DefaultEndpointsProtocol=https;AccountName=<storage_acct>;AccountKey=xx-xx-xx==;EndpointSuffix=core.windows.net` | Storage Account connection string for Azure Web Jobs used by Functions                                                                  |
 | `datazoom_STORAGE`                       | `DefaultEndpointsProtocol=https;AccountName=<storage_acct>;AccountKey=xx-xx-xx==;EndpointSuffix=core.windows.net` | Storage Account connection string for Input blobs                                                                                       |
 | `MANAGED_CLIENT_ID`                      | `XXX-XXX-XXX`                                                                                                     | Azure Managed Service Identity Client ID                                                                                                |
@@ -43,13 +43,13 @@ touch functions/local.settings.json
 | `METRICS_ADVISOR_API_KEY`                | `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`                                                                            | Metrics Advisor API Key. Can be found in Azure Metics Advisor Workspace                                                                |
 | `METRICS_ADVISOR_ALERT_CONFIGURATION_ID` | `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`                                                                            | Metrics Advisor configuration ID. Can be found in Azure Metics Advisor Workspace                                                       |
 
-### Development
+## Development
 
-#### Running Azure Functions
+### Running Azure Functions
 
 To run the Azure Functions locally, follow this guide: [Develop and Code Azure Functions Locally](https://learn.microsoft.com/azure/azure-functions/functions-develop-local)
 
-#### Extending Data Transformations
+### Extending Data Transformations
 
 This project allows for extending the `Data Transformation` logic into more custom logic that fits your use case.
 
@@ -59,13 +59,13 @@ This doc will walk you through how to extend the Transformation and add custom l
 
 The linter used is the [Megalinter](https://oxsecurity.github.io/megalinter/latest/)
 
-To Use Locally, follow this guide: [Using Megalinter Locally](https://oxsecurity.github.io/megalinter/latest/mega-linter-runner/)
+To use locally, follow this guide: [Using Megalinter Locally](https://oxsecurity.github.io/megalinter/latest/mega-linter-runner/)
 
-### Deployment
+## Deployment
 
 There are a few ways to deploy Azure Functions.
 
 1. Deploy through [VSCode](https://learn.microsoft.com/azure/azure-functions/functions-reference-python?tabs=asgi%2Capplication-level#publishing-to-azure)
-2. Deploy via [azure CLI](https://learn.microsoft.com/azure/azure-functions/create-first-function-cli-python?tabs=azure-cli%2Cbash%2Cbrowser#create-supporting-azure-resources-for-your-function)
+2. Deploy via [Azure CLI](https://learn.microsoft.com/azure/azure-functions/create-first-function-cli-python?tabs=azure-cli%2Cbash%2Cbrowser#create-supporting-azure-resources-for-your-function)
 
-***Go to the next step to change the data transformation logic based on your project needs. [Extend data transformation logic](/docs/3_extending_transformation_logic.md)***
+***Go to the next step to change the data transformation logic based on your project needs. [Extending and Customizing Transformation Logic](/docs/3_extending_transformation_logic.md)***

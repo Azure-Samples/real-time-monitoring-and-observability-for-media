@@ -1,6 +1,6 @@
-# How to run test files locally
+# Running Tests Locally
 
-On the VS Code ensure pytest plugin is installed. It will automatically detects all test files in the project folder. Follow the bellow steps to run the test
+On the VS Code install the [python extension](https://code.visualstudio.com/docs/python/testing). It will automatically detects pytest files in the project folder. Follow the below steps to run the test:
 
 ## Ctrl+Shift+P and Select a python version 3.9 on vs code
 
@@ -23,5 +23,3 @@ On the VS Code ensure pytest plugin is installed. It will automatically detects 
 5. Ensure to choose the right prefix for the test files. In our case, files used test\_\* prefix
 
    ![Alt](./images/test_name_prefix.png "Test name prefix")
-
-***Go to the main page [Main Page](https://github.com/Azure-Samples/real-time-monitoring-and-observability-for-media)***

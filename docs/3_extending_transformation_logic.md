@@ -1,12 +1,10 @@
-# Extending Transforms
+# Extending and Customizing Transformation Logic
 
-## Overview
-
-This Sample project demonstrates the ability to take in JSON data, and convert it to an ingestible `pandas Dataframe` that can then be ingested into Azure Data Explorer (Kusto Clusters).
+This sample project demonstrates the ability to take in JSON data, and convert it into an ingestible `pandas.Dataframe` that can then be ingested into Azure Data Explorer (Kusto Clusters).
 
 `transform.py` - The current struct of this file and the `class Transform()` is to give generalized methods in preparing data from JSON to a Dataframe.
 
-The Idea will be to extend and **inherit** from `Transform` by creating a custom `CustomTransform(Transform)`, that contains custom logic on how that transformation can happen, and what the input JSON data and **output** Dataframe structures are to look like.
+The idea will be to extend `Transform` by creating a custom `CustomTransform(Transform)`, that contains custom logic on how that transformation can happen, and what the input JSON data and **output** Dataframe structures look like.
 
 For an example, Let's examine [slow_start_transform.py](../functions/transformations/slow_start_transform.py):
 
@@ -16,7 +14,7 @@ For an example, Let's examine [slow_start_transform.py](../functions/transformat
 class SlowStartTransform(Transform)
 ```
 
-- `slow_start_transform.py` contains mappings between JSON properties and their desired `pandas.Dataframe` Column Names
+- `slow_start_transform.py` contains mappings between JSON properties and their desired `pandas.Dataframe` column names
 
 ```python
 video_slow_start_mappings = {
@@ -52,7 +50,7 @@ def get_dataframe(self) -> pd.DataFrame:
     return self.prepare_result(main_df)
 ```
 
-## Walkthrough
+## Creating Custom Transformer
 
 Create file for extended class `custom_transformation.py`. And also set in `local.settings.json` the name of the **target Kusto Table**.
 
@@ -106,7 +104,7 @@ Edit the `__init__` constructor with correct argument values. This includes sett
         super().__init__(json_data=json_data, table=TARGET_KUSTO_TABLE, mappings=self.property_mappings)
 ```
 
-Override the `get_dataframe()` class instance method. between `self.create_normalized_df()` and `self.prepare_result`, Add your custom logic.
+Override the `get_dataframe()` class instance method. Between `self.create_normalized_df()` and `self.prepare_result`, add your custom logic.
 
 - `create_normaled_df()` will take the JSON File and create a normalized DataFrame
 - `prepare_result()` will take in a DataFrame and prepare it into an Ingestible DataFrame for Data Explorer
@@ -131,4 +129,4 @@ def get_transformations(json_string: str) -> list[Transform]:
     return [custom_transformation, second_transformation]
 ```
 
-***Go to the next step to learn more about types of function triggers in this project [Function Triggers](/docs/4_function_triggers.md)***
+***Go to the next step to learn more about types of function triggers in this project [Function Trigger Types](/docs/4_function_triggers.md)***
