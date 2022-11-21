@@ -57,7 +57,7 @@ This doc will walk you through how to extend the Transformation and add custom l
 
 ### Linting
 
-The linter used is the [Megalinter](https://oxsecurity.github.io/megalinter/latest/)
+The linter used is the [Megalinter](https://oxsecurity.github.io/megalinter/latest/).
 
 To use locally, follow this guide: [Using Megalinter Locally](https://oxsecurity.github.io/megalinter/latest/mega-linter-runner/)
 
@@ -65,7 +65,7 @@ To use locally, follow this guide: [Using Megalinter Locally](https://oxsecurity
 
 There are a few ways to deploy Azure Functions.
 
-1. Deploy through [VSCode](https://learn.microsoft.com/azure/azure-functions/functions-reference-python?tabs=asgi%2Capplication-level#publishing-to-azure)
-2. Deploy via [Azure CLI](https://learn.microsoft.com/azure/azure-functions/create-first-function-cli-python?tabs=azure-cli%2Cbash%2Cbrowser#create-supporting-azure-resources-for-your-function)
+- Deploy through [VSCode](https://learn.microsoft.com/azure/azure-functions/functions-reference-python?tabs=asgi%2Capplication-level#publishing-to-azure)
+- Deploy via [Azure CLI](https://learn.microsoft.com/azure/azure-functions/create-first-function-cli-python?tabs=azure-cli%2Cbash%2Cbrowser#create-supporting-azure-resources-for-your-function)
 
 ***Go to the next step to change the data transformation logic based on your project needs. [Extending and Customizing Transformation Logic](/docs/3_extending_transformation_logic.md)***

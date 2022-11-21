@@ -62,7 +62,6 @@ from utils.settings import TARGET_KUSTO_TABLE
 from .transform import Transform
 
 class CustomTransform(Transform)
-
 ```
 
 ```python
@@ -100,8 +99,8 @@ Edit the `__init__` constructor with correct argument values. This includes sett
 | `mappings` | JSON to Dataframe Property Mappings  |
 
 ```python
-    def __init__(self, json_data: str):
-        super().__init__(json_data=json_data, table=TARGET_KUSTO_TABLE, mappings=self.property_mappings)
+def __init__(self, json_data: str):
+    super().__init__(json_data=json_data, table=TARGET_KUSTO_TABLE, mappings=self.property_mappings)
 ```
 
 Override the `get_dataframe()` class instance method. Between `self.create_normalized_df()` and `self.prepare_result`, add your custom logic.
@@ -129,4 +128,4 @@ def get_transformations(json_string: str) -> list[Transform]:
     return [custom_transformation, second_transformation]
 ```
 
-***Go to the next step to learn more about types of function triggers in this project [Function Trigger Types](/docs/4_function_triggers.md)***
+***Go to the next step to learn more about types of function triggers in this project. [Function Trigger Types](/docs/4_function_triggers.md)***
