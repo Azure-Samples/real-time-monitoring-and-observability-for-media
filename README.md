@@ -8,7 +8,17 @@ This code sample includes the necessary Infrastructure-as-Code (IaC) to bootstra
 
 ![Architecture](./docs/images/real_time_monitoring_and_observability_for_media_workflow.png)
 
+Architecture diagram of an observable system. Raw telemetry is streamed to Azure via HTTP and connectors to Blob Storage. The raw telemetry is processed, transformed, normalized, and saved in Data Explorer for analysis. Systems like Grafana and Metrics Advisor can read data from Data Explorer and show insights to end customers.
+
+Key components of this architecture include:
+1. Instrumentation
+2. Ingestion
+3. Transformation and persistence
+4. Monitoring
+5. Anomaly detection
+
 *Note: This architecture deviates from the Azure Architecture Center article in that the Event Hubs ingestion service is not implemented.*
+
 
 ## Getting Started
 
