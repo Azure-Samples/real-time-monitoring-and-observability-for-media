@@ -1,6 +1,6 @@
 # Overview
 
-This code sample is a supplement to [Building real-time monitoring and observable systems for Media](http://microsoft.com/) architecture and highlights a use case in the Media industry for providing real-time monitoring and observability of systems and end-user device telemetry.
+This code sample is a supplement to [Building real-time monitoring and observable systems for Media](https://learn.microsoft.com/en-us/azure/architecture/example-scenario/monitoring/monitoring-observable-systems-media) architecture and highlights a use case in the Media industry for providing real-time monitoring and observability of systems and end-user device telemetry.
 
 This code sample includes the necessary Infrastructure-as-Code (IaC) to bootstrap development as well as Azure Functions to ingest and transform the data from HTTP and Blob endpoints.
 
